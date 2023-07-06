@@ -1,0 +1,31 @@
+time.c:56:1: error: control may reach end of non-void function [-Werror,-Wreturn-type]
+}
+^
+time.c:64:21: error: unknown type name 'car'; did you mean 'char'?
+void time_from_cmos(car *buffer, int size)
+                    ^~~
+                    char
+time.c:96:8: error: conflicting types for 'time_read'
+size_t time_read( devminor_t minor, u64_t postion, endpoint_t endpt,
+       ^
+time.c:11:5: note: previous declaration is here
+int time_read(devminor_t minor, u64_t position, endpoint_t usr_endpt,
+    ^
+time.c:108:37: error: use of undeclared identifier 'position'
+        bytes = MIN( strlen(buffer) - (int)position, size);
+                                           ^
+/usr/include/sys/param.h:138:34: note: expanded from macro 'MIN'
+#define MIN(a,b)        ((/*CONSTCOND*/(a)<(b))?(a):(b))
+                                        ^
+time.c:108:37: error: use of undeclared identifier 'position'
+/usr/include/sys/param.h:138:43: note: expanded from macro 'MIN'
+#define MIN(a,b)        ((/*CONSTCOND*/(a)<(b))?(a):(b))
+                                                 ^
+time.c:116:33: error: use of undeclared identifier 'position'; did you mean 'postion'?
+                grant, 0, (vir_bytes)buffer + position, bytes);
+                                              ^~~~~~~~
+                                              postion
+time.c:96:43: note: 'postion' declared here
+size_t time_read( devminor_t minor, u64_t postion, endpoint_t endpt,
+                                          ^
+6 errors generated.
