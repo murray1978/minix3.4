@@ -5,7 +5,15 @@ and
 
 styding 
  /usr/src/minix/include/minix/usb.c and usb.h 
+ chat - improvement for int usb_send_urb(struct usb_urb* urb)
+   #include <minix/mutex.h>
+    minix_mutex_lock(&pending_urbs_mutex);
+    urb->next = pending_urbs;
+    pending_urbs = urb;
+    minix_mutex_unlock(&pending_urbs_mutex);
+
 URB = USB Request Block
+HCD = Host Controller Driver
 
 ///////////////////////////////////////////////////////////////////////////
 e1000.conf
