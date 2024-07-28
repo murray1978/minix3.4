@@ -1,8 +1,16 @@
-generic driver notes
+generic driver notes, using Minix 3.4.0 as of 28/7/24
+/usr/src/minix/drivers/examples/hello uses sef functions
+and
+/usr/src/minix/deriver/net/e1000 uses netdriver to encase sef 
 
-driver.conf
-  service e1000
- {
+styding 
+ /usr/src/minix/include/minix/usb.c and usb.h 
+URB = USB Request Block
+
+///////////////////////////////////////////////////////////////////////////
+e1000.conf
+service e1000
+{
 	type net;
 	descr "Intel PRO/1000 Gigabit";
         system
@@ -10,15 +18,34 @@ driver.conf
                 IRQCTL          # 19
                 DEVIO           # 21
         ;
-        pci device      8086/100e;
-        pci device      8086/100f;
-        pci device      8086/107c;
-        pci device      8086/10cd;
-        pci device      8086/10d3;
-        pci device      8086/10de;
-        pci device      8086/105e;
+        pci device      8086:100e;
+        pci device      8086:100f;
+        pci device      8086:101e;
+        pci device      8086:107c;
+        pci device      8086:109a;
+        pci device      8086:10cd;
+        pci device      8086:10d3;
+        pci device      8086:10de;
+        pci device      8086:105e;
+        pci device      8086:150c;
         ipc
                 SYSTEM pm rs log tty ds vm
                 pci inet lwip ;
 };
-  
+hello.conf
+service hello
+{
+        system
+                IRQCTL          # 19
+                DEVIO           # 21
+        ;
+        ipc
+                SYSTEM pm rs tty ds vm vfs
+                pci inet lwip amddev
+                ;
+    uid 0;
+};
+///////////////////////////////////////////////////////////////////////////
+
+e1000.c //main entry point
+
