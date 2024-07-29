@@ -1,7 +1,16 @@
 generic driver notes, using Minix 3.4.0 as of 28/7/24
+
+	usbd = usb daemon
+	libusb = usb lib (from minix/usb.h and usb.c
+
+
 /usr/src/minix/drivers/examples/hello uses sef functions
 and
-/usr/src/minix/deriver/net/e1000 uses netdriver to encase sef 
+/usr/src/minix/driver/net/e1000 uses netdriver to encase sef 
+
+ddekit
+	/usr/src/minix/driver/usb/usbd/base/usbd.c
+		50: usbd_init_hcd() -> 168: ddekit_init() ->	
 
 styding 
  /usr/src/minix/include/minix/usb.c and usb.h 
