@@ -10,7 +10,9 @@ and
 
 ddekit
 	/usr/src/minix/driver/usb/usbd/base/usbd.c
-		50: usbd_init_hcd() -> 168: ddekit_init() ->	
+		50: usbd_init_hcd() -> 168: ddekit_init() ->
+			/usr/src/minix/minix/lib/libddekit/src/dde.c
+				
 
 styding 
  /usr/src/minix/include/minix/usb.c and usb.h 
